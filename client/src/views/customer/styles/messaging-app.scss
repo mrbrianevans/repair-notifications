@@ -1,0 +1,45 @@
+span.message-link{
+  text-decoration: underline;
+  cursor: pointer;
+}
+div.message-bubble{
+  margin: 0.5em;
+  padding: 0.5em;
+  box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.5);
+  background: royalblue;
+  border-radius: 0 1em 1em 0;
+  max-width: available;
+}
+div.message-bubble:last-child{
+  border-bottom-left-radius: 1em;
+}
+div.user-icon{
+  height: 3em;
+  width: 3em;
+  border-radius: 1.5em;
+  background: royalblue;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.3);
+}
+div.message-app-title{
+  background: royalblue;
+  height: 3em;
+  display: flex;
+  width: 100%;
+  box-shadow: 0 0.1em 0.4em rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
+div.message-app-title>p{
+  margin-left: 0.5em;
+  font-size: large;
+}
+div.text-timestamp{
+  text-align: center;
+  color: rgba(0,0,0,0.7);
+  font-size: smaller;
+  margin: 1.5em 0 0.5em 0;
+}
