@@ -1,0 +1,20 @@
+div.customer-dashboard-tile {
+  display: inline-block;
+  width: 7em;
+  height: 7em;
+  background: palegreen;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+div.new-customer-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.new-customer-button > span {
+  font-size: xxx-large;
+  user-select: none;
+}

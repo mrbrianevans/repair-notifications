@@ -13,6 +13,8 @@ div.mechanic-i-pad {
 
 div.mechanic-i-pad > div {
   background: aliceblue;
+  display: flex;
+  flex-direction: row;
   width: 94%;
   height: 90%;
 }

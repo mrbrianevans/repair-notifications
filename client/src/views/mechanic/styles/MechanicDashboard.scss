@@ -1,7 +1,8 @@
 div.mechanic-dashboard {
   background: #c6c6c6;
+  width: 100%;
 }
 
-div.customer-summary-item {
-  background: #a4a4a4;
+div.dashboard-tile-container {
+  display: flex;
 }
