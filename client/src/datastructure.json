@@ -1,0 +1,15 @@
+{
+  "customers": {
+    "id": {
+      "name": "name",
+      "car": {
+        "brand": "Vauxhall",
+        "model": "Insignia",
+        "color": "black"
+      },
+      "notifications": {
+        "datetime in milliseconds": "description"
+      }
+    }
+  }
+}

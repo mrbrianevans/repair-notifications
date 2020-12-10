@@ -1,0 +1,13 @@
+node_modules/*
+./node_modules/**
+**/node_modules/**
+public/*
+public/**
+
+node_modules\*
+.\node_modules\**
+**\node_modules\**
+public\*
+public\**
+
+webpack.config.js

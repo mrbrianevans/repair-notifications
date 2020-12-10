@@ -1,0 +1,15 @@
+div.mechanic-side-bar {
+  width: 2em;
+  height: 100%;
+  background: palegreen;
+  display: flex;
+}
+
+div.mechanic-side-bar > div {
+  height: 2em;
+  width: 100%;
+  background: forestgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

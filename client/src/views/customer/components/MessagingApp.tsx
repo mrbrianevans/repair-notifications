@@ -3,7 +3,7 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/analytics'
 
-import '../../styles/messaging-app.scss'
+import '../styles/messaging-app.scss'
 
 const randomNumber = (max: number, min = 0) => {
   return Math.round(Math.random() * (max - min)) + min

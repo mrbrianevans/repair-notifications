@@ -1,0 +1,11 @@
+div.splitscreen-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+div.splitscreen-element {
+  display: block;
+  width: 50%;
+}

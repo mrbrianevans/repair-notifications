@@ -6,6 +6,8 @@
     "target": "es5",
     "allowJs": true,
     "jsx": "react",
-    "removeComments": true
+    "removeComments": true,
+    "sourceMap": true,
+    "moduleResolution": "node"
   }
 }

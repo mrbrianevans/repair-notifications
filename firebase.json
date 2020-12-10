@@ -1,6 +1,7 @@
 {
   "rulesFile": "database.rules.json",
   "functions": {
+    "source": "server",
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"

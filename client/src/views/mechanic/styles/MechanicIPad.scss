@@ -1,0 +1,18 @@
+div.mechanic-i-pad {
+  height: 100%;
+  min-height: 40em;
+  width: 100%;
+  min-width: 50em;
+  background: black;
+  border-radius: 2em;
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.mechanic-i-pad > div {
+  background: aliceblue;
+  width: 94%;
+  height: 90%;
+}

@@ -1,0 +1,32 @@
+h1.big-link {
+  color: dodgerblue;
+  text-align: center;
+  font-family: 'Product Sans', sans-serif;
+  padding: 5% 0;
+}
+
+h1.big-link > span {
+  font-size: 150%;
+}
+
+div.view-options-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+div.view-options-container > div {
+  padding: 2%;
+  min-width: 150px;
+}
+
+div.view-options-container > div:first-child,
+div.view-options-container > div:last-child {
+  min-width: 500px;
+  width: 29%;
+}
+
+div.view-options-container > div > a > p {
+  text-align: center;
+}
