@@ -10,11 +10,11 @@ div.mechanic-i-pad {
   justify-content: center;
   align-items: center;
 }
-
+//todo: set all divs on page to 100% height. Its the only way
 div.mechanic-i-pad > div {
   background: aliceblue;
-  display: flex;
-  flex-direction: row;
+  display: block;
+  //flex-direction: row;
   width: 94%;
   height: 90%;
 }
