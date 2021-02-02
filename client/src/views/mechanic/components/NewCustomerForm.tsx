@@ -1,7 +1,7 @@
 import * as React from 'react'
+import { useState } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/database'
-import { useState } from 'react'
 import { ICustomer } from '../../../types/ICustomer'
 
 type Props = {
@@ -17,10 +17,13 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
     const newCustomer: ICustomer = {
       name: newName,
       car: {
-        brand: carBrand,
-        colour: carColour,
-        model: carModel,
-        licensePlate: 'LI53 PL8',
+        brand:
+          carBrand.charAt(0).toUpperCase() + carBrand.slice(1).toLowerCase(),
+        colour:
+          carColour.charAt(0).toUpperCase() + carColour.slice(1).toLowerCase(),
+        model:
+          carModel.charAt(0).toUpperCase() + carModel.slice(1).toLowerCase(),
+        licensePlate: 'LI"LI53 PL8"todo: install fakerjs to auto generate this content for demonstration purposes
       },
       notifications: {},
     }

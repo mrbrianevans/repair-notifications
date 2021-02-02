@@ -4,6 +4,7 @@ import { INotification } from '../../../types/INotification'
 import firebase from 'firebase/app'
 import 'firebase/database'
 import { ICar } from '../../../types/ICar'
+import { Insignia } from '../../../assets/Insignia'
 
 export const RepairApp: (props: { customerId: string }) => JSX.Element = (
   props
@@ -58,20 +59,23 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
       <div>
         <h3>Repair notifications</h3>
         <div>
-          <p>{name || ''}</p>
-          <p style={{ background: car?.colour, color: 'whitesmoke' }}>
+          <p>{name || ''""/p>
+          <p>
             {car?.colour} {car?.brand} {car?.model}
           </p>
+          <div>
+            <Insignia colour={car?.colour} />
+          </div>
         </div>
         <div>
           {notifications?.map((notification) => (
             <div
               key={notification.timestamp}
-              className={'notification-container'}>
-              <p className={'notification-timestamp'}>
+              className={'n"notification-container"
+              <p className={'n"notification-timestamp"
                 at {getReadableTime(notification.timestamp)}
               </p>
-              <p className={'notification-message'}>{notification.message}</p>
+              <p className={'n"notification-message"{notification.message}</p>
             </div>
           ))}
         </div>
