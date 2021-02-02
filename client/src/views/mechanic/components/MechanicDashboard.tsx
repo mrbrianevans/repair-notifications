@@ -16,7 +16,7 @@ export const MechanicDashboard: () => JSX.Element = () => {
       .on('child_added', (customer) => {
         const tempCustomer = customer.val() as ICustomer
         tempCustomer.key = customer.key // get customer ID
-        setCustomers((prevState) => [...prevState, tempCustomer])
+        setCustomers((prevState) => [tempCustomer, ...prevState])
       })
   }, [])
   const [selectedCustomer, setSelectedCustomer] = useState<
@@ -24,6 +24,7 @@ export const MechanicDashboard: () => JSX.Element = () => {
   >()
   return (
     <div className={'mechanic-dashboard'}>
+      <h1 className={'dashboard-title'}>Mechanics iPad</h1>
       {selectedCustomer ? (
         <CustomerDetailsPage
           customer={selectedCustomer}

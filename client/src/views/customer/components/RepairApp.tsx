@@ -3,7 +3,6 @@ import '../styles/RepairApp.scss'
 import { INotification } from '../../../types/INotification'
 import firebase from 'firebase/app'
 import 'firebase/database'
-import 'firebase/analytics'
 import { ICar } from '../../../types/ICar'
 
 export const RepairApp: (props: { customerId: string }) => JSX.Element = (
@@ -13,12 +12,7 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
   const [name, setName] = useState<string>()
   const [car, setCar] = useState<ICar>()
   useEffect(() => {
-    setNotifications([
-      {
-        timestamp: Date.now(),
-        message: 'Car dropped off',
-      },
-    ])
+    setNotifications([])
     const initialStartTime = Date.now()
     firebase
       .database()
@@ -41,6 +35,12 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
           .child(props.customerId)
           .child('notifications')
           .on('child_added', (newNotification) => {
+            console.log(
+              newNotification.val(),
+              'notification received in',
+              Date.now() - Number(newNotification.key),
+              'ms'
+            )
             // this is when a new notification is added
             setNotifications((prevState) => [
               ...prevState,
@@ -53,26 +53,28 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
       })
   }, [])
   return (
-    <div>
-      <div className={'repair-app-header-bar'}>Chrome O</div>
+    <div className={'notifications-container'}>
+      <div className={'repair-app-header-bar'}>Website</div>
       <div>
         <h3>Repair notifications</h3>
         <div>
           <p>{name || ''}</p>
-          <p>
+          <p style={{ background: car?.colour, color: 'whitesmoke' }}>
             {car?.colour} {car?.brand} {car?.model}
           </p>
         </div>
-        {notifications?.map((notification) => (
-          <div
-            key={notification.timestamp}
-            className={'notification-container'}>
-            <p className={'notification-timestamp'}>
-              at {getReadableTime(notification.timestamp)}
-            </p>
-            <p className={'notification-message'}>{notification.message}</p>
-          </div>
-        ))}
+        <div>
+          {notifications?.map((notification) => (
+            <div
+              key={notification.timestamp}
+              className={'notification-container'}>
+              <p className={'notification-timestamp'}>
+                at {getReadableTime(notification.timestamp)}
+              </p>
+              <p className={'notification-message'}>{notification.message}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -24,3 +24,8 @@ p.notification-timestamp {
 p.notification-message {
   color: rgb(31, 31, 39);
 }
+
+div.notifications-container {
+  overflow-y: scroll;
+  max-height: 100%;
+}

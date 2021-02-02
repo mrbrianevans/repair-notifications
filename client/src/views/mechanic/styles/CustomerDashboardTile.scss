@@ -7,14 +7,19 @@ div.customer-dashboard-tile {
   padding: 1em;
   border-radius: 0.5em;
 }
-
 div.new-customer-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 400ms ease 0s;
+  cursor: pointer;
 }
 
 div.new-customer-button > span {
   font-size: xxx-large;
   user-select: none;
+}
+
+div.new-customer-button:hover {
+  background: #55c155;
 }

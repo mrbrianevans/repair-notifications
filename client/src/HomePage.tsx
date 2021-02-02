@@ -23,7 +23,7 @@ export const HomePage: () => JSX.Element = () => {
           {/* HOMEPAGE */}
           <Route path={'/'}>
             <h1 className={'big-link'}>
-              <span>repair-notifications.web.app</span>
+              <span>notify.repair</span>
             </h1>
             <div className={'view-options-container'}>
               <div>
@@ -34,7 +34,7 @@ export const HomePage: () => JSX.Element = () => {
               </div>
               <div>
                 <Link to={'/splitscreen'}>
-                  <p>View split screen</p>
+                  <p>Fullscreen</p>
                 </Link>
               </div>
               <div>

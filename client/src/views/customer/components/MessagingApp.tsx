@@ -57,7 +57,7 @@ export const MessagingApp: (props: {
       <div
         className={'message-app-title'}
         style={{ background: textMessageColour }}>
-        <p>Mechanic</p>
+        <p>Customer messaging app</p>
       </div>
       <div className={'user-icon'} style={{ background: textMessageColour }}>
         M

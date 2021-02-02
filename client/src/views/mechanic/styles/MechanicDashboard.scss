@@ -1,8 +1,18 @@
 div.mechanic-dashboard {
   background: #c6c6c6;
   width: 100%;
+  height: 100%;
 }
 
 div.dashboard-tile-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80%;
+  align-content: baseline;
+}
+
+h1.dashboard-title {
+  margin: 0;
+  padding: 0;
 }
