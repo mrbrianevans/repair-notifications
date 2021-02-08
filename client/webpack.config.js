@@ -1,11 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const HTMLWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
-var config = {
+const config = {
   entry: './src/index.tsx',
 
   output: {
@@ -15,7 +13,6 @@ var config = {
   plugins: [
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({ filename: 'main.css' }),
-    // , new HtmlWebpackPlugin()
   ],
 
   module: {
