@@ -1,5 +1,5 @@
-// @flow
 import * as React from 'react'
+import './insignia.scss'
 
 type Props = {
   colour?: string
@@ -17,11 +17,12 @@ const colourMapper: { [key: string]: string } = {
   green: '#2d8b2d',
 }
 
-export const Insignia = (props: Props) => {
+export const Insignia: (props: Props) => JSX.Element = (props: Props) => {
   const bodyColour =
     colourMapper[(props?.colour || 'grey').toLowerCase()] || '#373535'
   return (
     <svg
+      className={'insignia'}
       width={'100%'}
       height={'40%'}
       viewBox={'0 0 3125 1250'}

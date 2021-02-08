@@ -8,11 +8,9 @@ export const CustomerDashboardTile: (props: {
   onClick: () => void
 }) => JSX.Element = (props) => {
   return (
-    <div className={'c"customer-dashboard-tile"
+    <div className={'customer-dashboard-tile'} onClick={props.onClick}>
       <p>{props.customer.name}</p>
       <Insignia colour={props.customer.car.colour} />
-
-      <button onClick={props.onClick}>View</button>
     </div>
   )
 }

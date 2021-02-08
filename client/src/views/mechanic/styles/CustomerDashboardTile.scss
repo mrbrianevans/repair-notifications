@@ -7,6 +7,13 @@ div.customer-dashboard-tile {
   padding: 1em;
   border-radius: 0.5em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 300ms ease;
+  user-select: none;
+  cursor: pointer;
+}
+div.customer-dashboard-tile:hover {
+  background-color: aliceblue;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 div.new-customer-button {
   display: flex;

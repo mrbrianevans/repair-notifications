@@ -3,16 +3,16 @@ import { useState } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/database'
 import { ICustomer } from '../../../types/ICustomer'
-
 type Props = {
   escape: () => void
 }
 
 export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
-  const [newName, setNewName] = useState('')
-  const [carBrand, setCarBrand] = useState('')
-  const [carColour, setCarColour] = useState('')
-  const [carModel, setCarModel] = useState('')
+  const [newName, setNewName] = useState(name.firstName())
+  const { brand: randomBrand, model: randomModel } = vehicle.getVehicle()
+  const [carBrand, setCarBrand] = useState(randomBrand)
+  const [carColour, setCarColour] = useState(RandomColour.colour())
+  const [carModel, setCarModel] = useState(randomModel)
   const handleNewCustomer = () => {
     const newCustomer: ICustomer = {
       name: newName,
@@ -23,7 +23,7 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
           carColour.charAt(0).toUpperCase() + carColour.slice(1).toLowerCase(),
         model:
           carModel.charAt(0).toUpperCase() + carModel.slice(1).toLowerCase(),
-        licensePlate: 'LI"LI53 PL8"todo: install fakerjs to auto generate this content for demonstration purposes
+        licensePlate: 'LI53 PL8', //todo: install fakerjs to auto generate this content for demonstration purposes
       },
       notifications: {},
     }
@@ -46,6 +46,7 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
           type={'text'}
           onChange={(v) => setNewName(v.target.value)}
           placeholder={'Name'}
+          value={newName}
         />
       </div>
 
@@ -53,20 +54,64 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
         type={'text'}
         onChange={(v) => setCarBrand(v.target.value)}
         placeholder={'Car brand'}
+        value={carBrand}
       />
       <input
         type={'text'}
         onChange={(v) => setCarModel(v.target.value)}
         placeholder={'Car model'}
+        value={carModel}
       />
       <input
         type={'text'}
         onChange={(v) => setCarColour(v.target.value)}
         placeholder={'Car colour'}
+        value={carColour}
       />
       <div>
         <button onClick={handleNewCustomer}>Add</button>
       </div>
     </>
   )
+}
+
+const colours = [
+  'blue',
+  'orange',
+  'black',
+  'grey',
+  'white',
+  'silver',
+  'red',
+  'yellow',
+  'green',
+]
+
+class RandomColour {
+  static colour = () => {
+    return colours[Math.floor(Math.random() * colours.length)]
+  }
+}
+
+class name {
+  static firstName = () => {
+    const names = ['Bob', 'Alice', 'Charlie', 'Dianna', 'Amy', 'Richard']
+    return names[Math.floor(Math.random() * names.length)]
+  }
+}
+
+class vehicle {
+  static getVehicle = () => {
+    const models = [
+      { brand: 'Tesla', model: 'Model 3' },
+      { brand: 'Tesla', model: 'Model S' },
+      { brand: 'Vauxhall', model: 'Insignia' },
+      { brand: 'Ford', model: 'Mondeo' },
+      { brand: 'Kia', model: 'Optima' },
+      { brand: 'VW', model: 'Passat' },
+      { brand: 'VW', model: 'Jetta' },
+      { brand: 'Audi', model: 'A7' },
+    ]
+    return models[Math.floor(Math.random() * models.length)]
+  }
 }

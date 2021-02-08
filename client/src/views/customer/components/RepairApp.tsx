@@ -59,7 +59,7 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
       <div>
         <h3>Repair notifications</h3>
         <div>
-          <p>{name || ''""/p>
+          <p>{name || ''}</p>
           <p>
             {car?.colour} {car?.brand} {car?.model}
           </p>
@@ -71,11 +71,11 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
           {notifications?.map((notification) => (
             <div
               key={notification.timestamp}
-              className={'n"notification-container"
-              <p className={'n"notification-timestamp"
+              className={'notification-container'}>
+              <p className={'notification-timestamp'}>
                 at {getReadableTime(notification.timestamp)}
               </p>
-              <p className={'n"notification-message"{notification.message}</p>
+              <p className={'notification-message'}>{notification.message}</p>
             </div>
           ))}
         </div>
