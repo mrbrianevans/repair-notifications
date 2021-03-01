@@ -7,32 +7,29 @@ import 'firebase/database'
 export const CustomerView: (props: {
   numberOfPhones: number
 }) => JSX.Element = (props) => {
-  //TODO:
+  //Done:
   // - take number of phones and call the database with a count limit of that
   // - get their id's  passed as props to CustomerPhone using map
-  const [customerIds, setCustomerIds] = useState<string[]>()
+  const [customerIds, setCustomerIds] = useState<string[]>([])
   useEffect(() => {
-    const callTime = Date.now()
+    let isMounted = true
     firebase
       .database()
       .ref('customers')
-      .limitToFirst(props.numberOfPhones)
-      .once('value')
-      .then((customerIds) => {
-        console.log(
-          'Customer Ids: ' +
-            Object.keys(customerIds.val()) +
-            ' in ' +
-            (Date.now() - callTime) +
-            'ms'
-        )
-        setCustomerIds(Object.keys(customerIds.val()))
+      .limitToLast(props.numberOfPhones)
+      .on('child_added', (customerId) => {
+        if (isMounted)
+          setCustomerIds((prevState) => [customerId.key, ...prevState])
+        console.log('Customer IDS: ', customerIds)
       })
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   return (
     <div className={'phone-container'}>
-      {customerIds?.map((customerId) => (
+      {customerIds?.slice(0, props.numberOfPhones)?.map((customerId) => (
         <CustomerPhone customerId={customerId} key={customerId} />
       ))}
     </div>

@@ -31,10 +31,11 @@ export const MessagingApp: (props: {
   const [timeOfMessage] = useState(randomNumber(59, 10))
   const [dayOfWeek] = useState(randomElement(days))
   useEffect(() => {
+    let isMounted = true
     console.log(`${dayOfWeek}, 8:${timeOfMessage}am`)
     const messageDelay = randomNumber(1500, 500)
     setTimeout(() => {
-      setShowFirstMessage(true)
+      if (isMounted) setShowFirstMessage(true)
     }, messageDelay)
     setTimeout(() => {
       const callTime = new Date().valueOf()
@@ -47,9 +48,12 @@ export const MessagingApp: (props: {
         .then((customerName) => {
           const t = new Date().valueOf() - callTime // time taken
           console.log(`Name received from db: ${customerName.val()} in ${t}ms`)
-          setName(customerName.val())
+          if (isMounted) setName(customerName.val())
         })
     }, messageDelay * 2)
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   return (

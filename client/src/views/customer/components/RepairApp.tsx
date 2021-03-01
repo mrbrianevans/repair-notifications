@@ -55,7 +55,7 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
   }, [])
   return (
     <div className={'notifications-container'}>
-      <div className={'repair-app-header-bar'}>Website</div>
+      <div className={'repair-app-header-bar'}>Website on customers phone</div>
       <div>
         <h3>Repair notifications</h3>
         <div>

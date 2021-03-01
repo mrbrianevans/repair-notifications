@@ -33,30 +33,36 @@ export const CustomerDetailsPage: (props: {
           <h2>Viewing {props.customer.name}</h2>
           <Insignia colour={props.customer.car.colour} />
           <div>
-            <h3>Car:</h3>
-            <p>
-              {props.customer.car.colour} {props.customer.car.brand}{' '}
-              {props.customer.car.model}
-            </p>
-            <p>License plate: {props.customer.car.licensePlate}</p>
+            <div className={'paragraph-row'}>
+              <p>
+                {props.customer.car.colour} {props.customer.car.brand}{' '}
+                {props.customer.car.model}
+              </p>
+              <p>License plate: {props.customer.car.licensePlate}</p>
+            </div>
           </div>
           <div>
             <h3>Send notification</h3>
             <div>
-              <textarea
-                value={notificationMessage}
-                placeholder={'Type a message...'}
-                onChange={(v) =>
-                  setNotificationMessage(v.target.value)
-                }></textarea>
               <input
+                className={'send-message-box'}
                 value={notificationMessage}
-                type={'textarea'}
                 placeholder={'Type a message...'}
                 onChange={(v) => setNotificationMessage(v.target.value)}
+                list={'prewritten-messages'}
               />
+              <datalist id={'prewritten-messages'}>
+                <option>Your car is finished, and ready to be collected</option>
+                <option>Approximately 2 hours until we finish</option>
+                <option>There has been a problem, please call me</option>
+                <option>An additional part is required for the repair</option>
+              </datalist>
             </div>
-            <button onClick={sendNotification}>Send</button>
+            <button
+              onClick={sendNotification}
+              className={'send-message-button'}>
+              Send
+            </button>
           </div>
         </>
       )}

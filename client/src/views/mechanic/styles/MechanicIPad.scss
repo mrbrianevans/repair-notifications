@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 div.mechanic-i-pad {
   height: 100%;
   min-height: 40em;
@@ -9,6 +10,7 @@ div.mechanic-i-pad {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Open Sans', sans-serif;
 }
 //todo: set all divs on page to 100% height. Its the only way
 div.mechanic-i-pad > div {

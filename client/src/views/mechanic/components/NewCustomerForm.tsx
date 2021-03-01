@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/database'
+import '../styles/NewCustomerForm.scss'
 import { ICustomer } from '../../../types/ICustomer'
 type Props = {
   escape: () => void
@@ -23,7 +24,7 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
           carColour.charAt(0).toUpperCase() + carColour.slice(1).toLowerCase(),
         model:
           carModel.charAt(0).toUpperCase() + carModel.slice(1).toLowerCase(),
-        licensePlate: 'LI53 PL8', //todo: install fakerjs to auto generate this content for demonstration purposes
+        licensePlate: 'LI53 PL8',
       },
       notifications: {},
     }
@@ -42,12 +43,16 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
     <>
       <p>You are creating a new customer</p>
       <div>
-        <input
-          type={'text'}
-          onChange={(v) => setNewName(v.target.value)}
-          placeholder={'Name'}
-          value={newName}
-        />
+        <label>
+          Name:
+          <input
+            type={'text'}
+            onChange={(v) => setNewName(v.target.value)}
+            placeholder={'Name'}
+            value={newName}
+            className={'new-customer-input'}
+          />
+        </label>
       </div>
 
       <input
@@ -55,19 +60,28 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
         onChange={(v) => setCarBrand(v.target.value)}
         placeholder={'Car brand'}
         value={carBrand}
+        className={'new-customer-input'}
       />
       <input
         type={'text'}
         onChange={(v) => setCarModel(v.target.value)}
         placeholder={'Car model'}
         value={carModel}
+        className={'new-customer-input'}
       />
       <input
         type={'text'}
         onChange={(v) => setCarColour(v.target.value)}
         placeholder={'Car colour'}
         value={carColour}
+        className={'new-customer-input'}
+        list={'list-of-colours'}
       />
+      <datalist id={'list-of-colours'}>
+        {colours.map((colour, index) => (
+          <option key={index}>{colour}</option>
+        ))}
+      </datalist>
       <div>
         <button onClick={handleNewCustomer}>Add</button>
       </div>
@@ -95,7 +109,21 @@ class RandomColour {
 
 class name {
   static firstName = () => {
-    const names = ['Bob', 'Alice', 'Charlie', 'Dianna', 'Amy', 'Richard']
+    const names = [
+      'Bob',
+      'Alice',
+      'Charlie',
+      'Amy',
+      'Richard',
+      'Emily',
+      'Benjamin',
+      'Thomas',
+      'Ryan',
+      'Adam',
+      'Toby',
+      'Zoe',
+      'Dan',
+    ]
     return names[Math.floor(Math.random() * names.length)]
   }
 }
