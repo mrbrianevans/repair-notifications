@@ -22,25 +22,28 @@ export const HomePage: () => JSX.Element = () => {
 
           {/* HOMEPAGE */}
           <Route path={'/'}>
-            <h1 className={'big-link'}>
-              <span>notify.repair</span>
-            </h1>
-            <div className={'view-options-container'}>
-              <div>
+            <header>
+              <h1 className={'big-link'}>
+                <span className={'protocol'}>https:// </span>
+                <span>notify.repair</span>
+              </h1>
+              <div className={'homepage-links-section'}>
                 <Link to={'/customer'}>
                   <p>View customer side</p>
                 </Link>
-                <CustomerView numberOfPhones={1} />
-              </div>
-              <div>
                 <Link to={'/splitscreen'}>
                   <p>Fullscreen</p>
                 </Link>
-              </div>
-              <div>
                 <Link to={'/mechanic'}>
                   <p>View mechanic side</p>
                 </Link>
+              </div>
+            </header>
+            <div className={'view-options-container'}>
+              <div>
+                <CustomerView numberOfPhones={1} />
+              </div>
+              <div>
                 <MechanicView />
               </div>
             </div>

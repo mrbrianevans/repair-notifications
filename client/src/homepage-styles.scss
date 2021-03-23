@@ -1,41 +1,92 @@
+@import "globals.sass";
+@import "reset.scss";
+
+@media screen and (max-width: $iPad_upper_width) {
+  header {
+    display: none;
+  }
+}
+
 h1.big-link {
-  color: dodgerblue;
   text-align: center;
   font-family: 'Product Sans', sans-serif;
   padding: 5% 0;
 }
 
+@media screen and (min-width: $phone_upper_width) {
+  h1.big-link {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: $iPad_upper_width) {
+  h1.big-link {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 5rem;
+  }
+}
+
 h1.big-link > span {
-  font-size: 150%;
+  font-weight: bolder;
+  color: $primary_colour;
+}
+
+h1.big-link > span.protocol {
+  color: $muted_colour;
+  font-weight: lighter;
+  font-style: oblique;
 }
 
 div.view-options-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
 }
 
-div.view-options-container > div {
-  padding: 2%;
-  min-width: 150px;
+// display only a block on phones/ipads
+@media screen and (max-width: $iPad_upper_width) {
+  div.view-options-container {
+    display: block;
+  }
 }
 
-div.view-options-container > div:first-child {
-  min-width: 250px;
-  width: 25%;
+// display in rows desktop
+@media screen and (min-width: $iPad_upper_width) {
+  div.view-options-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  div.view-options-container > div {
+    padding: 2%;
+    min-width: 150px;
+  }
+
+  div.view-options-container > div:first-child {
+    min-width: 250px;
+    width: 25%;
+  }
+
+  div.view-options-container > div:last-child {
+    min-width: 500px;
+    width: 50%;
+  }
 }
 
-div.view-options-container > div:last-child {
-  min-width: 500px;
-  width: 50%;
-}
-
-div.view-options-container > div:nth-child(2) {
-  min-width: 50px;
-  width: 5%;
-}
 
 div.view-options-container > div > a > p {
   text-align: center;
 }
+
+div.homepage-links-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+div.homepage-links-section > a {
+  color: $primary_colour;
+}
+
+

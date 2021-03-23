@@ -15,7 +15,7 @@ input.send-message-box {
   border: 1px solid #3f3f3f;
 }
 
-button.send-message-button{
+button.send-message-button {
   height: 2rem;
   font-family: 'Product Sans', sans-serif;
   border-radius: 0.25rem;
@@ -25,11 +25,13 @@ button.send-message-button{
   background-color: #fff;
   margin: 0.25rem 0;
 }
-button.send-message-button:hover{
+
+button.send-message-button:hover {
   background-color: #c3dbc3;
   cursor: pointer;
 }
-div.paragraph-row{
+
+div.paragraph-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

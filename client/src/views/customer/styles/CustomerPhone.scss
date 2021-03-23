@@ -1,3 +1,5 @@
+@import "../../../globals.sass";
+
 div.phone {
   background: black;
   border-radius: 1.5em;
@@ -15,4 +17,32 @@ div.phone > div {
   width: 85%;
   height: 90%;
   margin: 1em 0 0;
+}
+
+// on an actual phone: don't show the phone outline
+@media screen and (max-width: $phone_upper_width) and (orientation: portrait) {
+  div.phone {
+    background: transparent;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  div.phone > div {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+}
+
+//don't display phone at all on an iPad
+@media screen and (max-width: $iPad_upper_width) and (min-width: $phone_upper_width) {
+  div.phone {
+    display: none;
+  }
+
+  div.phone > div {
+  }
 }
