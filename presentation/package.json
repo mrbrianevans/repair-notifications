@@ -1,0 +1,13 @@
+{
+  "name": "presentation",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "npm i && git clone https://github.com/hakimel/reveal.js.git && cd reveal.js && npm i",
+    "build": "cd reveal.js && npm run build",
+    "start": "serve",
+    "prestart": "start chrome http://localhost:5000"
+  },
+  "dependencies": {
+    "serve": "^11.3.2"
+  }
+}
