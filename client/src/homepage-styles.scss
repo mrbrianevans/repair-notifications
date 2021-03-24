@@ -1,5 +1,5 @@
-@import "globals.sass";
-@import "reset.scss";
+@import 'globals.sass';
+@import 'reset.scss';
 
 @media screen and (max-width: $iPad_upper_width) {
   header {
@@ -23,8 +23,8 @@ h1.big-link {
 
 @media screen and (min-width: $iPad_upper_width) {
   h1.big-link {
-    padding: 1rem;
-    margin: 1rem;
+    padding: 1.5rem;
+    margin: 1.5rem;
     font-size: 5rem;
   }
 }
@@ -74,7 +74,6 @@ div.view-options-container {
   }
 }
 
-
 div.view-options-container > div > a > p {
   text-align: center;
 }
@@ -88,5 +87,3 @@ div.homepage-links-section {
 div.homepage-links-section > a {
   color: $primary_colour;
 }
-
-

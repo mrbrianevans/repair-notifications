@@ -38,6 +38,7 @@ export const CustomerDetailsPage: (props: {
                 {props.customer.car.colour} {props.customer.car.brand}{' '}
                 {props.customer.car.model}
               </p>
+              <p> | </p>
               <p>License plate: {props.customer.car.licensePlate}</p>
             </div>
           </div>
