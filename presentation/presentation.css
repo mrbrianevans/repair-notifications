@@ -1,0 +1,12 @@
+img.car {
+    float: right;
+}
+
+ul.car {
+    list-style-image: url("/assets/insignia_bullet.svg");
+    list-style-position: outside;
+}
+
+ul.car > li {
+    padding-left: 0.7rem;
+}
