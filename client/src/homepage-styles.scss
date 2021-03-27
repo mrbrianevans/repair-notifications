@@ -11,6 +11,7 @@ h1.big-link {
   text-align: center;
   font-family: 'Product Sans', sans-serif;
   padding: 5% 0;
+  color: $muted_colour;
 }
 
 @media screen and (min-width: $phone_upper_width) {

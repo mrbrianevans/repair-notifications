@@ -13,7 +13,7 @@ export const HomePage: () => JSX.Element = () => {
           <Route path={'/'}>
             <header>
               <h1 className={'big-link'}>
-                <span className={'protocol'}>https:// </span>
+                <span className={'protocol'}>https:</span>//
                 <span>notify.repair</span>
               </h1>
             </header>
