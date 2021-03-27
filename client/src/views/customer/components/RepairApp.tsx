@@ -53,6 +53,37 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
           })
       })
   }, [])
+  const respondToNewPart = (
+    notificationTime: number,
+    result: 'accept' | 'reject'
+  ) => {
+    const editingNotification = notifications.find(
+      (notification) => notification.timestamp === notificationTime
+    )
+    if (editingNotification.notification.type === 'part-request') {
+      editingNotification.notification.data.result = result
+      setNotifications((prevState) => [
+        ...prevState.filter(
+          (notification) => notification.timestamp !== notificationTime
+        ),
+        editingNotification,
+      ])
+      firebase
+        .database()
+        .ref('customers')
+        .child(props.customerId)
+        .child('notifications')
+        .child(String(notificationTime))
+        .child('data')
+        .child('result')
+        .set(result)
+      console.log(
+        'Part',
+        editingNotification.notification.data.name,
+        result + 'ed'
+      )
+    }
+  }
   return (
     <div className={'notifications-container'}>
       <div className={'repair-app-header-bar'}>Website on customers phone</div>
@@ -71,51 +102,68 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
           </div>
         </div>
         <div>
-          {notifications?.map((notification) => (
-            <div
-              key={notification.timestamp}
-              className={
-                notification.notification.type + '-notification-container'
-              }>
-              <p className={'notification-timestamp'}>
-                at {getReadableTime(notification.timestamp)}
-              </p>
-
-              {notification.notification.type === 'message' && (
-                <p className={'notification-message'}>
-                  {notification.notification.data.message}
+          {notifications
+            ?.sort((a, b) => a.timestamp - b.timestamp)
+            .map((notification) => (
+              <div
+                key={notification.timestamp}
+                className={
+                  notification.notification.type + '-notification-container'
+                }>
+                <p className={'notification-timestamp'}>
+                  at {getReadableTime(notification.timestamp)}
                 </p>
-              )}
-              {notification.notification.type === 'call-request' && (
-                <div className={'button-row'}>
+
+                {notification.notification.type === 'message' && (
                   <p className={'notification-message'}>
-                    Mechanic requested you to call him
+                    {notification.notification.data.message}
                   </p>
-                  <button className={'call-button'}>
-                    <span className={'material-icons'}>call</span>
-                  </button>
-                </div>
-              )}
-              {notification.notification.type === 'part-request' && (
-                <>
-                  <p className={'notification-message'}>
-                    Mechanic requested to buy a
-                    {' ' + notification.notification.data.name + ' '}
-                    for
-                    {' ' + notification.notification.data.price}
-                  </p>
+                )}
+                {notification.notification.type === 'call-request' && (
                   <div className={'button-row'}>
-                    <button className={'accept-button'}>
-                      <span className={'material-icons'}>price_check</span>
-                    </button>
-                    <button className={'reject-button'}>
-                      <span className={'material-icons'}>block</span>
-                    </button>
+                    <p className={'notification-message'}>
+                      Mechanic requested you to call him
+                    </p>
+                    <a className={'call-button'} href={'tel:01488662662'}>
+                      <span className={'material-icons'}>call</span>
+                    </a>
                   </div>
-                </>
-              )}
-            </div>
-          ))}
+                )}
+                {notification.notification.type === 'part-request' && (
+                  <>
+                    <p className={'notification-message'}>
+                      Mechanic requested to buy a
+                      {' ' + notification.notification.data.name + ' '}
+                      for
+                      {' ' + notification.notification.data.price}
+                    </p>
+                    {notification.notification.data.result ? (
+                      <p>
+                        You {notification.notification.data.result}ed the new
+                        part
+                      </p>
+                    ) : (
+                      <div className={'button-row'}>
+                        <button
+                          className={'accept-button'}
+                          onClick={() =>
+                            respondToNewPart(notification.timestamp, 'accept')
+                          }>
+                          <span className={'material-icons'}>price_check</span>
+                        </button>
+                        <button
+                          className={'reject-button'}
+                          onClick={() =>
+                            respondToNewPart(notification.timestamp, 'reject')
+                          }>
+                          <span className={'material-icons'}>block</span>
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            ))}
         </div>
       </div>
     </div>

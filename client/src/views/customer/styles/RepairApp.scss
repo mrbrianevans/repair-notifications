@@ -24,7 +24,7 @@ div.part-request-notification-container {
   border: 0.1em solid rgb(31, 31, 39);
   margin: 0.5em;
   padding: 0 0.5em;
-  background: lightcoral;
+  background: lightblue;
 }
 
 p.notification-timestamp {
@@ -50,7 +50,7 @@ div.notifications-container::-webkit-scrollbar {
 
 button.reject-button,
 button.accept-button,
-button.call-button {
+a.call-button {
   height: 2rem;
   width: 2rem;
   border-radius: 0.5rem;
@@ -65,8 +65,9 @@ button.call-button {
 button.accept-button {
   color: forestgreen;
 }
-button.call-button {
+a.call-button {
   color: forestgreen;
+  text-decoration: none;
 }
 button.reject-button {
   color: crimson;

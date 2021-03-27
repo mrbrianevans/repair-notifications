@@ -15,7 +15,6 @@ export const CustomerDetailsPage: (props: {
   const [newPartName, setNewPartName] = useState<string>()
   const [newPartPrice, setNewPartPrice] = useState<number>()
   const [responseMessage, setResponseMessage] = useState<string>()
-  //todo: add error messages for bad input (null message etc)
   const [errorMessage, setErrorMessage] = useState<string>()
   const sendNotification = () => {
     if (props.customer !== 'new' && notificationMessage)
@@ -28,6 +27,10 @@ export const CustomerDetailsPage: (props: {
         .set({ type: 'message', data: { message: notificationMessage } })
         .then(() => updateResponseMessage('Sent message to customer'))
         .then(() => setNotificationMessage(''))
+    else if (props.customer === 'new')
+      setErrorMessage('Cannot send notification before creating customer')
+    else if (!notificationMessage)
+      setErrorMessage("Can't send empty notification")
   }
   const sendCallRequest = () => {
     if (props.customer !== 'new' && !callRequested)
@@ -41,8 +44,11 @@ export const CustomerDetailsPage: (props: {
         .then(() => updateResponseMessage('Sent call request to customer'))
         .then(() => setCallRequested(true))
         .then(() => setTimeout(() => setCallRequested(false), 5000))
+    else if (callRequested)
+      setErrorMessage('Already requested the customer to call')
   }
   const sendPartRequest = () => {
+    //todo: listen for responses to part requests
     if (props.customer !== 'new' && newPartName && newPartPrice)
       firebase
         .database()
@@ -57,10 +63,20 @@ export const CustomerDetailsPage: (props: {
         .then(() => updateResponseMessage('Sent part request to customer'))
         .then(() => setNewPartPrice(undefined))
         .then(() => setNewPartName(undefined))
+    else if (!newPartName)
+      setErrorMessage('Part name required to send notification')
+    else if (!newPartPrice)
+      setErrorMessage('Part price required to send notification')
   }
+  const [clearMessageTimeout, setClearMessageTimeout] = useState<
+    undefined | NodeJS.Timeout
+  >()
   const updateResponseMessage = (newMessage: string) => {
     setResponseMessage(newMessage)
-    setTimeout(() => setResponseMessage(undefined), 5000)
+    if (clearMessageTimeout) clearTimeout(clearMessageTimeout)
+    setClearMessageTimeout(
+      setTimeout(() => setResponseMessage(undefined), 5000)
+    )
   }
   return (
     <div className={'customer-details-page'}>
