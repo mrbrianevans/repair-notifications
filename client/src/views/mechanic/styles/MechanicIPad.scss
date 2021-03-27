@@ -23,8 +23,12 @@ div.mechanic-i-pad > div {
   width: 94%;
   height: 90%;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-
+div.mechanic-i-pad > div::-webkit-scrollbar {
+  display: none;
+}
 // this is on an iPad: don't display the fake screen border
 @media screen and (max-width: $iPad_upper_width) {
   div.mechanic-i-pad {
@@ -36,7 +40,7 @@ div.mechanic-i-pad > div {
   }
   div.mechanic-i-pad > div {
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
 }
 

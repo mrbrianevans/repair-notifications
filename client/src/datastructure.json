@@ -8,7 +8,14 @@
         "color": "black"
       },
       "notifications": {
-        "datetime in milliseconds": "description"
+        "datetime in milliseconds": {
+          "type": "message/part request/call request",
+          "data": {
+            "message":"description",
+            "name": "name of the part requested (brake pads)",
+            "price": "$50"
+          }
+        }
       }
     }
   }

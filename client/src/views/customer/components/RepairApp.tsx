@@ -47,7 +47,7 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
               ...prevState,
               {
                 timestamp: Number(newNotification.key),
-                message: newNotification.val(),
+                notification: newNotification.val(),
               },
             ])
           })
@@ -74,11 +74,46 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
           {notifications?.map((notification) => (
             <div
               key={notification.timestamp}
-              className={'notification-container'}>
+              className={
+                notification.notification.type + '-notification-container'
+              }>
               <p className={'notification-timestamp'}>
                 at {getReadableTime(notification.timestamp)}
               </p>
-              <p className={'notification-message'}>{notification.message}</p>
+
+              {notification.notification.type === 'message' && (
+                <p className={'notification-message'}>
+                  {notification.notification.data.message}
+                </p>
+              )}
+              {notification.notification.type === 'call-request' && (
+                <div className={'button-row'}>
+                  <p className={'notification-message'}>
+                    Mechanic requested you to call him
+                  </p>
+                  <button className={'call-button'}>
+                    <span className={'material-icons'}>call</span>
+                  </button>
+                </div>
+              )}
+              {notification.notification.type === 'part-request' && (
+                <>
+                  <p className={'notification-message'}>
+                    Mechanic requested to buy a
+                    {' ' + notification.notification.data.name + ' '}
+                    for
+                    {' ' + notification.notification.data.price}
+                  </p>
+                  <div className={'button-row'}>
+                    <button className={'accept-button'}>
+                      <span className={'material-icons'}>price_check</span>
+                    </button>
+                    <button className={'reject-button'}>
+                      <span className={'material-icons'}>block</span>
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>

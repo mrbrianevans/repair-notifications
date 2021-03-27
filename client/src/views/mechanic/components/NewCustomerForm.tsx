@@ -10,6 +10,7 @@ type Props = {
 
 export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
   const [newName, setNewName] = useState(name.firstName())
+  const [licensePlate, setLicensePlate] = useState('LI53 PL8')
   const { brand: randomBrand, model: randomModel } = vehicle.getVehicle()
   const [carBrand, setCarBrand] = useState(randomBrand)
   const [carColour, setCarColour] = useState(RandomColour.colour())
@@ -24,11 +25,14 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
           carColour.charAt(0).toUpperCase() + carColour.slice(1).toLowerCase(),
         model:
           carModel.charAt(0).toUpperCase() + carModel.slice(1).toLowerCase(),
-        licensePlate: 'LI53 PL8',
+        licensePlate: licensePlate,
       },
       notifications: {},
     }
-    newCustomer.notifications[Date.now()] = 'Car checked in'
+    newCustomer.notifications[Date.now()] = {
+      type: 'message',
+      data: { message: 'Car checked in' },
+    }
     firebase
       .database()
       .ref('customers')
@@ -41,10 +45,11 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
   }
   return (
     <>
+      <button onClick={props.escape}>Back</button>
       <p>You are creating a new customer</p>
       <div>
         <label>
-          Name:
+          <span className={'new-customer-input-label'}>Name:</span>
           <input
             type={'text'}
             onChange={(v) => setNewName(v.target.value)}
@@ -54,29 +59,56 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
           />
         </label>
       </div>
+      <div>
+        <label>
+          <span className={'new-customer-input-label'}>License plate:</span>
+          <input
+            type={'text'}
+            onChange={(v) => setLicensePlate(v.target.value)}
+            placeholder={'Name'}
+            value={licensePlate}
+            className={'new-customer-input'}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          <span className={'new-customer-input-label'}>Car manufacturer:</span>
+          <input
+            type={'text'}
+            onChange={(v) => setCarBrand(v.target.value)}
+            placeholder={'Car brand'}
+            value={carBrand}
+            className={'new-customer-input'}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          <span className={'new-customer-input-label'}>Model:</span>
+          <input
+            type={'text'}
+            onChange={(v) => setCarModel(v.target.value)}
+            placeholder={'Car model'}
+            value={carModel}
+            className={'new-customer-input'}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          <span className={'new-customer-input-label'}>Colour:</span>
+          <input
+            type={'text'}
+            onChange={(v) => setCarColour(v.target.value)}
+            placeholder={'Car colour'}
+            value={carColour}
+            className={'new-customer-input'}
+            list={'list-of-colours'}
+          />
+        </label>
+      </div>
 
-      <input
-        type={'text'}
-        onChange={(v) => setCarBrand(v.target.value)}
-        placeholder={'Car brand'}
-        value={carBrand}
-        className={'new-customer-input'}
-      />
-      <input
-        type={'text'}
-        onChange={(v) => setCarModel(v.target.value)}
-        placeholder={'Car model'}
-        value={carModel}
-        className={'new-customer-input'}
-      />
-      <input
-        type={'text'}
-        onChange={(v) => setCarColour(v.target.value)}
-        placeholder={'Car colour'}
-        value={carColour}
-        className={'new-customer-input'}
-        list={'list-of-colours'}
-      />
       <datalist id={'list-of-colours'}>
         {colours.map((colour, index) => (
           <option key={index}>{colour}</option>
