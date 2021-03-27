@@ -8,13 +8,15 @@ type Props = {
 const colourMapper: { [key: string]: string } = {
   blue: '#0f6e9f',
   orange: '#cd4e09',
+  'burnt orange': '#cf5706',
   black: '#1e1e1e',
   grey: '#373535',
-  white: '#e3e0e0',
+  white: '#d6d6d6',
   silver: '#9c9898',
   red: '#9c1616',
   yellow: '#f1b523',
-  green: '#2d8b2d',
+  green: '#bdf3bd',
+  'light blue': '#6BB5FF',
 }
 
 export const Insignia: (props: Props) => JSX.Element = (props: Props) => {
@@ -26,12 +28,20 @@ export const Insignia: (props: Props) => JSX.Element = (props: Props) => {
       width={'100%'}
       height={'40%'}
       viewBox={'0 0 3125 1250'}
+      // viewBox={'0 0 3200 1300'}
       version={'1.1'}
       style={{
         fillRule: 'evenodd',
         clipRule: 'evenodd',
         strokeMiterlimit: 10,
       }}>
+      {/*<defs>*/}
+      {/*  <filter id="f2" x="0" y="0" width="120%" height="120%">*/}
+      {/*    <feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />*/}
+      {/*    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="24" />*/}
+      {/*    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />*/}
+      {/*  </filter>*/}
+      {/*</defs>*/}
       <g id={'g10'}>
         <g id={'g70'}>
           <g id={'g72'}>
@@ -42,6 +52,7 @@ export const Insignia: (props: Props) => JSX.Element = (props: Props) => {
                   'M229.251,624.946c0,0 76.961,-85.011 229.977,-118.123c153.017,-33.111 431.323,-58.166 536.911,-78.75c0,0 243.406,-135.122 339.15,-157.494l12.528,-10.733c0,0 288.145,-91.278 749.889,-17.006c0,0 104.694,14.317 178.072,40.272c0,0 33.111,-10.739 30.428,11.628c0,0 191.5,52.8 363.317,126.178c0,0 115.433,4.472 126.166,17.9c0,0 22.378,2.678 15.217,33.105c0,0 5.372,42.956 13.422,37.584c0,0 20.584,51.005 9.845,74.272c0,0 14.316,17 6.261,25.061c0,0 -4.472,8.945 40.266,52.795c0,0 13.428,100.222 2.689,151.227c0,0 -12.527,22.372 -8.055,24.161c0,0 -49.217,69.8 -140.495,79.645c0,0 -143.172,27.739 -173.6,22.366c0,0 34.906,-166.438 -99.327,-244.294c-134.228,-77.85 -272.034,4.478 -303.356,53.694c-31.322,49.217 -64.428,107.384 -53.689,224.606l-1203.58,-13.422c0,0 10.739,-215.656 -128.856,-280.984c-139.6,-65.327 -243.961,-6.216 -297.094,68.9c-51.9,73.378 -25.95,219.245 -25.95,219.245c0,0 -79.639,1.789 -86.8,-32.217c0,0 -134.228,-31.316 -144.967,-63.533c0,0 21.478,-16.106 29.534,-56.378c0,0 -51.012,-49.217 -17.9,-189.705'
                 }
                 style={{ fill: bodyColour, fillRule: 'nonzero' }}
+                // filter={'url(#f2)'}
               />
             </g>
             <g id={'g82'}>
@@ -187,7 +198,7 @@ export const Insignia: (props: Props) => JSX.Element = (props: Props) => {
                 d={
                   'M248.937,621.81c0,0 109.394,-17.45 193.961,-9.389c0,0 -42.956,67.111 -83.895,69.795c0,0 -51.677,18.794 -89.927,16.777l-5.373,-18.122c0,0 -9.394,3.356 -12.755,-16.105c-3.356,-19.461 -2.011,-42.956 -2.011,-42.956'
                 }
-                style={{ fill: '#fdfbe5', fillRule: 'nonzero' }}
+                style={{ fill: '#f5f1c9', fillRule: 'nonzero' }}
               />
             </g>
             <g id={'g146'}>

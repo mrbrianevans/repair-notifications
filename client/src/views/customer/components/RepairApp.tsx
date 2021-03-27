@@ -59,7 +59,10 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
       <div>
         <h3>Repair notifications</h3>
         <div>
-          <p>{name || ''}</p>
+          <p>
+            Viewing {name || ''}&apos;{name?.endsWith('s') ? '' : 's'} car
+            repair status
+          </p>
           <p>
             {car?.colour} {car?.brand} {car?.model}
           </p>

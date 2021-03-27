@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './homepage-styles.scss'
 import { CustomerView } from './views/customer/CustomerView'
 import { MechanicView } from './views/mechanic/MechanicView'
@@ -13,7 +13,8 @@ export const HomePage: () => JSX.Element = () => {
           <Route path={'/'}>
             <header>
               <h1 className={'big-link'}>
-                <span className={'protocol'}>https:</span>//
+                <span className={'protocol'}>https:</span>
+                {'//'}
                 <span>notify.repair</span>
               </h1>
             </header>

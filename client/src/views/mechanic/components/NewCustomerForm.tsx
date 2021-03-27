@@ -91,14 +91,12 @@ export const NewCustomerForm: (props: Props) => JSX.Element = (props) => {
 
 const colours = [
   'blue',
-  'orange',
+  'light blue',
   'black',
   'grey',
   'white',
   'silver',
   'red',
-  'yellow',
-  'green',
 ]
 
 class RandomColour {

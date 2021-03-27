@@ -49,3 +49,32 @@ div.text-timestamp {
   font-size: smaller;
   margin: 1.5em 0 0.5em 0;
 }
+div.message-send-box {
+  height: 2rem;
+  border-radius: 1rem;
+  background: #3e3c3c;
+  color: whitesmoke;
+  margin: auto 0.25rem 0.25rem 0.25rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  border: 1px solid #353535;
+}
+span.cursor {
+  transform: scaleX(0.5);
+  animation: blink 0.8s steps(5, start) alternate infinite;
+  padding: 0 0.2rem;
+}
+@keyframes blink {
+  //75%{
+  //  visibility: visible;
+  //}
+  to {
+    visibility: hidden;
+  }
+}
+div.customer-messages-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

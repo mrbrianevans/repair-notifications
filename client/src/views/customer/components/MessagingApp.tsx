@@ -12,13 +12,13 @@ const randomElement = (array: any[]) => {
   return array[randomNumber(array.length - 1)]
 }
 const colours = [
-  'tomato',
-  'royalblue',
-  'dodgerblue',
-  'forestgreen',
-  'limegreen',
-  'orange',
-  'slateblue',
+  '#365B80',
+  '#6BB5FF',
+  '#1E90FF',
+  '#5C6E80',
+  '#1872CC',
+  // 'orange',
+  // 'slateblue',
 ]
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 export const MessagingApp: (props: {
@@ -57,7 +57,7 @@ export const MessagingApp: (props: {
   }, [])
 
   return (
-    <>
+    <div className={'customer-messages-container'}>
       <div
         className={'message-app-title'}
         style={{ background: textMessageColour }}>
@@ -69,39 +69,45 @@ export const MessagingApp: (props: {
       <div className={'text-timestamp'}>
         {dayOfWeek}, 8:{timeOfMessage}am
       </div>
-      {showFirstMessage && (
-        <>
-          <div
-            className={'message-bubble'}
-            style={{ background: textMessageColour }}>
-            <p>Welcome to the Repair Notifications App!</p>
-          </div>
-        </>
-      )}
+      <>
+        {showFirstMessage && (
+          <>
+            <div
+              className={'message-bubble'}
+              style={{ background: textMessageColour }}>
+              <p>Welcome to the Repair Notifications Service!</p>
+            </div>
+          </>
+        )}
 
-      {name && (
-        <>
-          <div
-            className={'message-bubble'}
-            style={{ background: textMessageColour }}>
-            <p>
-              Hi {name || props.customerId}, I am message. Click
-              {` my `}
-              <span
-                onClick={() => {
-                  firebase.analytics().logEvent('message_link_clicked', {
-                    customer: props.customerId,
-                  })
-                  props.onClick()
-                }}
-                className={'message-link'}>
-                link
-              </span>
-              {` to track the repair on your car`}
-            </p>
-          </div>
-        </>
-      )}
-    </>
+        {name && (
+          <>
+            <div
+              className={'message-bubble'}
+              style={{ background: textMessageColour }}>
+              <p>
+                Hi {name || props.customerId}. You can track the status of your
+                repair at any time by clicking this link:
+                <span
+                  onClick={() => {
+                    firebase.analytics().logEvent('message_link_clicked', {
+                      customer: props.customerId,
+                    })
+                    props.onClick()
+                  }}
+                  className={'message-link'}>
+                  {' '}
+                  notify.repair/{props.customerId.slice(15)}
+                </span>
+              </p>
+            </div>
+          </>
+        )}
+        <div className={'message-send-box'}>
+          <span className={'cursor'}>|</span>
+          <span>Text message</span>
+        </div>
+      </>
+    </div>
   )
 }

@@ -57,6 +57,10 @@ export const CustomerDetailsPage: (props: {
                 <option>Approximately 2 hours until we finish</option>
                 <option>There has been a problem, please call me</option>
                 <option>An additional part is required for the repair</option>
+                <option>
+                  We have been delayed, the repair will take longer than
+                  expected
+                </option>
               </datalist>
             </div>
             <button
