@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ICustomer } from '../../../types/ICustomer'
 import '../styles/CustomerDetailsPage.scss'
 import { NewCustomerForm } from './NewCustomerForm'
@@ -16,6 +16,48 @@ export const CustomerDetailsPage: (props: {
   const [newPartPrice, setNewPartPrice] = useState<number>()
   const [responseMessage, setResponseMessage] = useState<string>()
   const [errorMessage, setErrorMessage] = useState<string>()
+  const [partsRequested, setPartsRequested] = useState<{
+    [key: number]: { name: string; price: number; accepted?: boolean }
+  }>({})
+  useEffect(() => {
+    if (props.customer !== 'new')
+      firebase
+        .database()
+        .ref('customers')
+        .child(props.customer.key)
+        .child('notifications')
+        .get()
+        .then((notifications) => {
+          console.log(
+            'Fetched',
+            notifications.numChildren(),
+            'notifications from DB'
+          )
+          notifications.forEach((notificationSnapshot) => {
+            if (notificationSnapshot.child('type').val() === 'part-request') {
+              setPartsRequested((prevState) => {
+                prevState[Number(notificationSnapshot.key)] = {
+                  name: notificationSnapshot.child('data').child('name').val(),
+                  price: notificationSnapshot
+                    .child('data')
+                    .child('price')
+                    .val(),
+                  accepted: notificationSnapshot
+                    .child('data')
+                    .child('result')
+                    .exists()
+                    ? notificationSnapshot
+                        .child('data')
+                        .child('result')
+                        .val() === 'accept'
+                    : undefined,
+                }
+                return prevState
+              })
+            }
+          })
+        })
+  }, [])
   const sendNotification = () => {
     if (props.customer !== 'new' && notificationMessage)
       firebase
@@ -49,20 +91,48 @@ export const CustomerDetailsPage: (props: {
   }
   const sendPartRequest = () => {
     //todo: listen for responses to part requests
-    if (props.customer !== 'new' && newPartName && newPartPrice)
-      firebase
+    if (props.customer !== 'new' && newPartName && newPartPrice) {
+      const partRequest = { name: newPartName, price: newPartPrice }
+      const timeOfPartRequest = Date.now()
+      setPartsRequested((prevState) => {
+        prevState[timeOfPartRequest] = partRequest
+        return prevState
+      })
+      const customerNotificationReference = firebase
         .database()
         .ref('customers')
         .child(props.customer.key)
         .child('notifications')
-        .child(String(Date.now()))
+        .child(String(timeOfPartRequest))
+      customerNotificationReference
         .set({
           type: 'part-request',
-          data: { name: newPartName, price: newPartPrice },
+          data: partRequest,
         })
         .then(() => updateResponseMessage('Sent part request to customer'))
         .then(() => setNewPartPrice(undefined))
         .then(() => setNewPartName(undefined))
+        .then(() =>
+          customerNotificationReference
+            .child('data')
+            .child('result')
+            .on('value', (data) => {
+              const result = data.val()
+              if (result === 'accept' || result === 'reject') {
+                console.log('Result is ' + result)
+                setPartsRequested((prevState) => {
+                  prevState[timeOfPartRequest].accepted = result === 'accept'
+                  return prevState
+                })
+                customerNotificationReference
+                  .child('data')
+                  .child('result')
+                  .off('value')
+              }
+            })
+        )
+    }
+    //listen for updates on the same path
     else if (!newPartName)
       setErrorMessage('Part name required to send notification')
     else if (!newPartPrice)
@@ -156,11 +226,39 @@ export const CustomerDetailsPage: (props: {
                 value={newPartPrice || ''}
                 onChange={(v) => setNewPartPrice(Number(v.target.value))}
               />
-              <button onClick={sendPartRequest}>Request part</button>
-              <button onClick={sendCallRequest} disabled={callRequested}>
+              <button
+                onClick={sendPartRequest}
+                className={'send-message-button'}>
+                Request part
+              </button>
+              <button
+                onClick={sendCallRequest}
+                disabled={callRequested}
+                className={'send-message-button'}>
                 Request call
               </button>
             </div>
+            {Object.keys(partsRequested).length && (
+              <div>
+                <h3>Parts requested</h3>
+                <ul>
+                  {Object.keys(partsRequested).map((partRequestTimestamp) => {
+                    const partRequest =
+                      partsRequested[Number(partRequestTimestamp)]
+                    return (
+                      <li key={partRequestTimestamp}>
+                        {partRequest.name} for &pound;{partRequest.price}{' '}
+                        {partRequest.accepted === undefined
+                          ? 'pending approval'
+                          : partRequest.accepted
+                          ? 'accepted'
+                          : 'rejected'}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
           </div>
         </>
       )}
