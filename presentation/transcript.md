@@ -1,56 +1,57 @@
 # Presentation transcript
 
-----
+---
 
 ## Introduce the problem
 
-- Getting a car repair can be a daunting experience for people
-- Some people take the day off work to get their car fixed
-- Uncertainty
+Uncertainty, inconvenience
+ - mechanic phones while customer is at work
+ - customer phones back, but the mechanic is on a call to someone else
+ - mechanic is distracted from his work by answering the phone
+ - current system isn't effective
 
-## Case study
+## Introduce the solution
+> A platform for better communication between mechanics and customers
 
-- Someone drops their car off
-- The mechanic needs to buy a part to fix the car
-- Phones the customer
-- The customer is busy
-- The customer calls the mechanic back, distracting him from his work
-- After a few hours, they agree to buy the part
-- The mechanic calls the customer to collect their car
-- The customer has just started cooking dinner
-- The car stays longer than it needs to at the repair shop
-- Using valuable floor space and stressing out the customer
-- Whats missing in this situation? Why has everything gone wrong?
-- This might be designed to be bad, but these things really happen
-- There is a lack of communication between the mechanic and the car owner
+## High level overview
+
+A way for mechanics to communicate with people getting their car repaired
 
 ## Introduce the solution
 
 - Communication platform to bridge the gap
 - Connecting the mechanic and the customer
 - Allow the mechanic to send notifications to the customer
-- Allow the customer to approve the purchase of a new part
 - Gives peace of mind to the customer, and improves the experience
 
-## Repeat case study with solution
-
-- Customer drops car off for MOT
-- Gets texted a link to notify.repair
-- Mechanic sends notification request to buy new part
-- Customer approves the purchase of a new part at earliest convenience
-- No wasted time, no missed calls, no stress either side
-- Mechanic sends estimation of 2 hours left to finish service
-- Customer decides to hold off on cooking dinner until the repair is finished
-- Customer fetches car immediately after the repair finishes
-- Maximum efficiency of floor space use at repair shop, and no uncertainty for the customer
-- Happy customer no longer reluctant/hesistant to get car fixed
+**Demonstration**
+(show the customer side receiving a notification first, and then go to the mechanics side)
 
 ## More detail about solution features
 
-- Instant notification delivery (less than 1 second)
+- Instant notification delivery (better than 1 minute connect time on a call, no introduction necessary)
 - Preformatted messages
 - Call button for customer
 - Part approval or rejection
+
+Discuss benefits
+ - easy for mechanic to notify the customer
+ - customer can view any time
+ - avoids unnecessary phone calls
+ - part requests - prevents surprise billing & delays
+ - give the customer time to think about whether or not they want the new part (or contact their husband)
+ - call requests - more complex discussions
+
+Further benefits:
+ - keeps a record of communications
+ - no disputes about what was said, or buying a new part
+ - can be used to solicit reviews from the customer
+ - ANALYTICS
+
+## Analytics
+ - use to improve the service over time (eg preformat commonly sent messages)
+ - example: make a slider for the number of hours left
+ - gather information about part approval/rejection rates
 
 ## High level overview
 
@@ -66,8 +67,8 @@ A way for mechanics to communicate with people getting their car repaired
 
 - integrate with existing manufacturer "owner apps" like BMW
 - integrate with existing iPad apps for mechanics
-- integrate with CDK cloud CMS for dealerships
-
+- integrate with CDK cloud DMS for dealerships
+>Dealer Management Software
 ## How would this scale to the moon
 
 ## The business model for dealerships
@@ -80,5 +81,3 @@ Increased customer retention Ownership experience and dealership efficiency
 - $ Installation fee (integration)
 - $ First year free
 - $ monthly subscription fee thereafter
-
-## Future ideas

@@ -8,5 +8,38 @@ ul.car {
 }
 
 ul.car > li {
-    padding-left: 0.7rem;
+    padding-left: 0.9rem;
+}
+#customer_phone{
+    border: 1em solid #1c1e20; width: 230px; height: 500px; border-radius: 0.5em; padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#customer_solution{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+}
+#customer_solution>div{
+
+}
+
+.review{
+    color: tomato;
+}
+.review:hover{
+    color: black;
+    cursor: default;
+}
+
+.review .material-icons{
+    font-size: 50px;
+}
+
+.reviews-split-screen{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }

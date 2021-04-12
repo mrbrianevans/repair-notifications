@@ -205,6 +205,7 @@ export const CustomerDetailsPage: (props: {
                   We have been delayed, the repair will take longer than
                   expected
                 </option>
+                <option>How was your experience today? ☆☆☆☆☆</option>
               </datalist>
               <button
                 onClick={sendNotification}
