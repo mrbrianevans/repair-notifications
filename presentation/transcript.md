@@ -69,15 +69,25 @@ A way for mechanics to communicate with people getting their car repaired
 - integrate with existing iPad apps for mechanics
 - integrate with CDK cloud DMS for dealerships
 >Dealer Management Software
+
+
 ## How would this scale to the moon
 
-## The business model for dealerships
-
-Increased customer retention Ownership experience and dealership efficiency
-![img.png](img.png)
+- once off dev costs
+- no tech limit on scale (each dealership could be hosted on a different server)
+- can be used globally (except for countries with low smartphone prevalence)
 
 ## The business model for CDK/Keyloop (commercially viable)
 
-- $ Installation fee (integration)
-- $ First year free
-- $ monthly subscription fee thereafter
+- biggest cost will be development
+- monthly subscription model
+- stable revenue stream for keyloop
+- doesn't discourage usage
+
+## The business model for dealerships
+
+- predictable budgeting with fixed cost
+- collect data such as part rejection/approval
+- saves the mechanic time, increasing efficiency
+- solicit reviews leading to more business
+- increased customer retention from the good experience
