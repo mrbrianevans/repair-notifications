@@ -134,8 +134,7 @@ export const RepairApp: (props: { customerId: string }) => JSX.Element = (
                     <p className={'notification-message'}>
                       Mechanic requested to buy a
                       {' ' + notification.notification.data.name + ' '}
-                      for
-                      {' ' + notification.notification.data.price}
+                      for &pound;{' ' + notification.notification.data.price}
                     </p>
                     {notification.notification.data.result ? (
                       <p>
