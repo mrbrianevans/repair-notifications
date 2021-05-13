@@ -18,7 +18,7 @@ h1.big-link {
   h1.big-link {
     padding: 1rem;
     margin: 1rem;
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
@@ -26,13 +26,17 @@ h1.big-link {
   h1.big-link {
     padding: 1.5rem;
     margin: 1.5rem;
-    font-size: 5rem;
+    font-size: 3rem;
   }
 }
 
 h1.big-link > span {
   font-weight: bolder;
   color: $primary_colour;
+}
+p.header-description{
+  font-family: 'Product Sans', sans-serif;
+  margin: 1rem;
 }
 
 h1.big-link > span.protocol {

@@ -17,6 +17,19 @@ export const HomePage: () => JSX.Element = () => {
                 {'//'}
                 <span>notify.repair</span>
               </h1>
+              <p className={'header-description'}>
+                This is a prototype of a notification delivery system for car
+                mechanics to inform their customers about the status of their
+                repair. It was built for the{' '}
+                <a href={'http://www.keyloop.co.uk/dealertech/index.html'}>
+                  Keyloop Dealertech competition
+                </a>{' '}
+                by{' '}
+                <a href={'https://www.linkedin.com/in/brianevanstech/'}>
+                  Brian Evans
+                </a>{' '}
+                .
+              </p>
             </header>
             <div className={'view-options-container'}>
               <div>
